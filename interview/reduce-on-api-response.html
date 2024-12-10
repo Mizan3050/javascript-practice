@@ -7,8 +7,9 @@
   </head>
   <body>
     <script>
+      console.log('start of script')
       async function getData() {
-        const url = "https://api.github.com/users/mizan3050/repdos";
+        const url = "https://api.github.com/users/mizan3050/repos";
         fetch(url)
           .then((response) => {
             if (!response.ok) {
@@ -20,6 +21,9 @@
           .catch((error) => console.log(error.message));
       }
       getData();
+      (function(){
+        console.log('IIFE MFFFF')
+      })()
     </script>
   </body>
 </html>
