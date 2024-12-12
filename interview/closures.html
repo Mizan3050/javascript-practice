@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Closures
+      // a function bind together with its lexical env
+      // function along with its lexical scope forms closure
+      function a() {
+        var b = 100;
+        function c() {
+          var d = 50;
+          function e() {
+            var f = 45;
+            console.log(b, d);
+          }
+          e();
+        }
+        c();
+      }
+      a()
+    </script>
+  </body>
+</html>
