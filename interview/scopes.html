@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      a();
+      function a() {
+        console.log(b);
+      }
+      var b = 10;
+
+      // lexical environment
+      // whenever an execution context is created, a lexical environment is also created.
+      // lexical env = local memory + lexical env of its parent
+      function a() {
+        var b = 10;
+        function c() {
+          console.log(b);
+          function d() {
+            var b = 100;
+            console.log(b);
+          }
+          d();
+        }
+        c();
+      }
+      a();
+      // here c is lexically inside 'a'
+      // for function c, it gets access to local memory along with its lexical environment, which is its parent function c
+      // here function c will gets access to lexical environment of all its parent functions
+      // c() -> a () -> global -> null
+      // this is called scope chaining
+
+      // let const and var
+      // var and functions are hoisted and are available to access within the scope right after they are hosted, though the value will be available only after initialization
+      // for let and const, hoisting works differently
+      // let and const are are stored in a different memory space but they are in temporal dead zone
+
+      // reference error
+      // whenever we try to access a let or const before its initialization we get reference error
+      // type error
+      // If we try to reassign value to const we get type error
+      // syntax error
+      // not initializing const, redeclaration of let in same scope
+
+      // BLOCk SCOPE
+      // multiple javascript statements combined in a group enclosing within curly braces
+      // what are variables and functions can be accessed in a block is known as block scope
+
+      //   {
+      //     var t = 10;
+      //     let q = 5;
+      //     {
+      //         var d = 100;
+      //     }
+      //   }
+      //   console.log(t)
+      //   console.log(d)
+      //   console.log(q)
+
+      // functions create their own local scope
+      // blocks create their block scope
+    </script>
+  </body>
+</html>
