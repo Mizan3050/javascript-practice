@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Call
+      let playerInfo = {
+        first_name: "MS",
+        last_name: "Dhoni",
+      };
+      let player2 = {
+        first_name: "Sachin",
+        last_name: "Tendulkar",
+      };
+
+      let printName = function (...args) {
+        console.log(this, args);
+      };
+      printName.call(playerInfo, 'asd','asdds','asdsad')
+      printName.apply(playerInfo, ['asd','asdds','asdsad'])
+      const printNameFn = printName.bind(playerInfo, 'asd','asdds','asdsad')
+      printNameFn()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Add myBind method to Function.prototype
+      // return a function from myBind method since bind returns a function
+      // consider the object passing scenarios
+      // consider args scenarios
+      // consider passing arg to returned function
+
+      // How the bind method works
+
+      function printDetails(home_town, state, country) {
+        console.log(
+          this.first_name +
+            " " +
+            this.last_name +
+            " " +
+            home_town +
+            " " +
+            state +
+            " " +
+            country
+        );
+      }
+      const detail = {
+        first_name: "MS",
+        last_name: "Dhoni",
+      };
+
+      //   const printDetailFn = printDetails.bind(detail, "Pune", "Maharashtra");
+      //   printDetailFn("India");
+
+      Function.prototype.myBind = function (...args1) {
+        let obj = this;
+        return function (...args2) {
+          obj.call(args1[0], ...args1.slice(1),...args2)
+        };
+      };
+      const printDetailFn = printDetails.myBind(detail, "Pune", "Maharashtra");
+      printDetailFn("India");
+    </script>
+  </body>
+</html>
